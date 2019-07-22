@@ -18,12 +18,19 @@ apt autoremove
 #	nmap + zenmap
 #	git
 #	vlc
-
 apt install terminator zsh gedit filezilla midori nmap zenmap git build-essential vlc
+
+
 #Instalamos oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+wget https://raw.githubusercontent.com/DM1298/dotfiles/master/zshrc
+mv zshrc ~/.zshrc
+rm zshrc
+
+
 #Instalamos atom
 wget https://atom.io/download/deb
 mv deb atom.deb
 dpkg -i atom.deb
+rm atom.deb
 
