@@ -9,16 +9,25 @@ apt install --fix-missing
 apt autoclean
 apt autoremove
 
-#Instalamos:
+#Instalacion basica:
 #	Terminator
 #	ZSH
 #	gedit
 #	midori
 #	filezilla
-#	nmap + zenmap
 #	git
 #	vlc
-apt install terminator zsh gedit filezilla midori nmap zenmap git build-essential vlc
+#	synaptic
+apt install terminator zsh gedit filezilla midori git build-essential vlc synaptic
+
+#Instalacion redes
+#
+#	nmap + zenmap
+#	wireshark
+#apt install nmap zenmap wireshark 
+
+#Instalacion dibujo
+#apt install gimp inkscape
 
 
 #Instalamos oh-my-zsh
