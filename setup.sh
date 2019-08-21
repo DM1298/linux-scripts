@@ -13,12 +13,11 @@ apt autoremove
 #	Terminator
 #	ZSH
 #	gedit
-#	midori
 #	filezilla
 #	git
 #	vlc
 #	synaptic
-apt install terminator zsh gedit filezilla midori git build-essential vlc synaptic
+apt install terminator zsh gedit filezilla git build-essential vlc synaptic
 
 #Instalacion redes
 #
