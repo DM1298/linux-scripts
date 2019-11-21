@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 clear
 apt update
@@ -8,4 +8,3 @@ apt install -f
 apt install --fix-missing
 apt autoclean
 apt autoremove
-
