@@ -3,6 +3,6 @@
 while [ true ]
 do
 	clear
-	sensors
-	sleep 1
+	sensors | grep Core | cut -d'(' -f1
+	sleep 10
 done
