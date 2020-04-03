@@ -1,0 +1,55 @@
+# Para configurar una vez ya nos postea el servidor en el navegador web:
+# Username --> El que quieras
+# Contraseña --> la que quieras
+#
+# PARA LA DB
+# user --> nexcloud
+# pass --> nextcloud
+# db   --> ncdb
+# direccion --> direccion IP del contenedor de la db:3306
+# chuleta direccion IP --> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' maria-db
+
+version: '2'
+
+services:
+
+  nextcloud:
+    container_name: nextcloud
+    restart: unless-stopped
+    image: nextcloud:apache
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /containers/cloud/nextcloud/apps:/var/www/html/apps
+      - /containers/cloud/nextcloud/config:/var/www/html/config
+      - /containers/cloud/nextcloud/data:/var/www/html/data
+    depends_on:
+      - db
+    environment:
+      - MYSQL_HOST=db
+    networks:
+      - nextcloud_network
+    env_file:
+      - db.env
+  db:
+    container_name: maria-db
+    restart: unless-stopped
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: XXXX
+    volumes:
+      - /containers/cloud/mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_ROOT_PASSWORD=XXXX
+    networks:
+      - nextcloud_network
+    env_file:
+      - db.env
+volumes:
+  nextcloud:
+  db:
+
+networks:
+  nextcloud_network:
