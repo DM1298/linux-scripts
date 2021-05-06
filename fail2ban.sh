@@ -1,13 +1,12 @@
 #!/bin/bash
-
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
 while [ true ]
 do
 	clear
-	cat /var/log/fail2ban.log | grep -v jail | grep -v JournalFilter | grep -v Flush | grep sshd | cut -f3 -d]
+	echo "Bienvenido al log de fail2ban"
+	cat /var/log/fail2ban.log | awk -f ./fail2ban.awk 
 	sleep 1
 done
-#input="/var/log/fail2ban.log"
-#while IFS= read -r line
-#do
-#	echo "$line" | grep INFO
-#done < "$input"
