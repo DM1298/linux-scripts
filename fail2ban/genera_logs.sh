@@ -10,7 +10,8 @@ do
 	echo " Hello, welcome to the fail2ban ban table"
 	echo -n " Actual time: "
 	date
-	cat /var/log/fail2ban.log | awk -f ./fail2ban.awk
+	echo "Generant banned.log,unbanned.log i full.log"
+	cat /home/david/fail2ban.log | awk -f ./genera_logs.awk
 	linia=0
 	secret=$(cat secret.key)
 	ultima=$(tail -1 banned.log)
@@ -26,12 +27,6 @@ do
 	done <banned.log
 	IPs=$(tail -n 1 banned.log )
 	IPs=$((IPs+1))
-	echo " _______________________________________________________________"
-	echo -e "|\t\t\t\t\t\t\t\t|"
-	echo -e "|   Date\t    Hora\t     IP \t  Country\t|"
-	echo "|_______________________________________________________________|"
-	echo -e "|\t\t\t\t\t\t\t\t|"
-	tail -$IPs banned.log | grep -v Total | awk 'BEGIN{FS="|"}{    print "| " $2 "\t" $3 "\t \033[91m" $1 "\033[39m\t    " $4 "   \t|"}'
-	echo "|_______________________________________________________________|"
+	tail -$IPs banned.log | grep -v Total | awk 'BEGIN{FS="|"}{print "|" $2 "|" $3 "|" $1 "|" $4 }'
 	sleep 20
 done

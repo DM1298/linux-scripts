@@ -1,2 +1,5 @@
 *.log
 *.key
+*.zip
+fail2ban/paises_db.d/*
+fail2ban/paises_ip.d/*
