@@ -26,7 +26,7 @@ if ($7 == "Unban"){
 
 END {
 print "|_______________________________________________|\n"
-print " Ip Banned count --> " numIP " IPs"
+print " Actually banned IPs --> " numIP " IPs"
 print "Total="numIP > "banned.log"
 
 }
