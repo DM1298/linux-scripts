@@ -20,5 +20,5 @@ do
 	pais=$(curl ipinfo.io/$pais?token=$secret 2>/dev/null | grep country | cut -d'"' -f4)
 	sed -e "${linia}s/$/|$pais/" -i banned.log
 done <banned.log
-cat banned.log
+#cat banned.log
 echo "END"

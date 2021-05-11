@@ -2,7 +2,7 @@
 
 # generamos un directorio que contiene archivos con el nombre de los paises y dentro de los archivos las ip que han atacado
 mkdir -p ./paises_db.d
-rm ./paises_db.d/*
+rm -f ./paises_db.d/*
 echo "Generamos directorio con los paises"
 while read p;
 	do
@@ -30,4 +30,4 @@ do
 done < paises.log
 cat paises.log | awk 'BEGIN{FS="|"}{print $2 "|"$1}' > paisses
 sort -g -r -o paises.log paisses
-rm paisses
+rm -f paisses
